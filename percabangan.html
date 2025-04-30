@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. percabangan IF
+        let nama = prompt("masukkan nama anda:");
+        if (nama) {
+            document.write(`Halo, ${nama}!<br>`);
+        }
+
+        // 2. percabangan IF...ELSE
+        let usiaString = prompt("Masukkan usia anda:");
+        if (usiaString !== null) {
+            let usia = parseInt(usiaString);
+            if (!isNaN(usia)) {
+                if (usia >= 17) {
+                    document.write("anda sudah cukup umur untuk memiliki KTP.<br>");
+                } else {
+                    document.write("Anda belum cukup umur untuk memiliki KTP.<br>");
+                }
+            }else {
+                document.write("input usia tidak valid.<br>");
+            }
+        }
+
+        // 3. percadangan IF...ELSE IF...ELSE
+        let nilaiString = prompt("Masukkan nilai ujian anda (0-100):");
+        if (nilaiString !== null) {
+            let nilai = parseFloat(nilaiString);
+            if (!isNaN(nilai) && nilai >= 0 && nilai <= 100) {
+                let grade;
+                if (nilai >= 90) {
+                    grade = "A";
+                } else if (nilai >= 80) {
+                    grade = "b";
+                }else if (nilai >= 70) {
+                    grade = "c"
+                } else {
+                    grade = "D atau di bawahnya";
+                }
+                document.write(`Nilai Anda ${nilai}, Grade: ${grade}<br>`);
+            } else {
+                document.write(`input nilai tidak valid.<br>`);
+            }
+        }
+
+        //4. percabangan SWITCH 
+        let pilihan = prompt("pilih angka (1, 2, atau 3) untuk melihat pesan:");
+        if (pilihan !== null) {
+            switch (pilihan) {
+                case "1":
+                document.write(`anda memilih pilihan pertama.<br>`);
+                   break;
+                case "2":
+                document.write(`anda memilih pilihan kedua.<br>`);
+                   break;
+                case "3":
+                document.write(`anda memilih pilihan ketiga.<br>`);
+                   break;
+                default:
+                document.write(`pilihan tidak valid.<br>`);
+            }
+        }
+    </script>
+</body>
+</html>
