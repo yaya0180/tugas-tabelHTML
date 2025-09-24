@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoeStyle - Toko Sepatu Branded Terlengkap</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #3498db;
+            --secondary-blue: #5dade2;
+            --dark-blue: #2c3e50;
+            --light-blue: #ebf5fb;
+            --accent-orange: #e67e22;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #5a5a5a;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-blue);
+            font-weight: 700;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(44, 62, 80, 0.1);
+        }
+        
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--dark-blue) !important;
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            color: #5a5a5a !important;
+            font-weight: 500;
+            position: relative;
+            margin: 0 5px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(235, 245, 251, 0.8)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: #5a5a5a;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, var(--light-blue) 0%, transparent 70%);
+            opacity: 0.5;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.15);
+            backdrop-filter: blur(5px);
+            border: 2px solid var(--light-blue);
+        }
+        
+        .shoe-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            transform: rotate(15deg);
+            z-index: 10;
+        }
+        
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 50px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-blue), var(--dark-blue));
+            border-radius: 2px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            background-color: white;
+        }
+        
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.2);
+        }
+        
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover .card-img-top {
+            transform: scale(1.1);
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .price-tag {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--dark-blue);
+            background-color: var(--light-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        .btn-cart {
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50px;
+            padding: 8px 15px;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-cart:hover {
+            background-color: var(--dark-blue);
+            transform: scale(1.05);
+            color: white;
+        }
+        
+        .btn-buy {
+            background-color: var(--dark-blue);
+            color: white;
+            border-radius: 50px;
+            padding: 8px 20px;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-buy:hover {
+            background-color: #1c2833;
+            transform: scale(1.05);
+            color: white;
+        }
+        
+        .ribbon {
+            position: absolute;
+            top: 15px;
+            left: -5px;
+            padding: 5px 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .ribbon::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            border-width: 0 5px 5px 0;
+            border-style: solid;
+            border-color: transparent var(--dark-blue) transparent transparent;
+        }
+        
+        .ribbon-new {
+            background-color: var(--primary-blue);
+        }
+        
+        .ribbon-sale {
+            background-color: var(--accent-orange);
+        }
+        
+        .ribbon-popular {
+            background-color: #2ecc71;
+        }
+        
+        .about-img {
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .about-img:hover {
+            transform: rotate(-2deg) scale(1.03);
+        }
+        
+        /* Shopping Cart Styles */
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .cart-modal-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+        
+        /* Checkout Modal */
+        .checkout-product-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid var(--light-blue);
+        }
+        
+        /* Contact Form */
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 20px;
+            border: 2px solid var(--light-blue);
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--dark-blue), var(--primary-blue));
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .social-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: white;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .social-icon:hover {
+            color: var(--light-blue);
+            transform: translateY(-5px);
+        }
+        
+        /* Shoe Elements */
+        .shoe-element {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .shoe-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 100px;
+            transform: rotate(-15deg);
+            color: var(--primary-blue);
+        }
+        
+        .shoe-2 {
+            bottom: 10%;
+            right: 5%;
+            font-size: 100px;
+            transform: rotate(15deg);
+            color: var(--secondary-blue);
+        }
+        
+        /* Custom checkbox for terms */
+        .form-check-input:checked {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+        
+        /* Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        /* Shoe Showcase */
+        .shoe-showcase {
+            background-color: var(--light-blue);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shoe-showcase::before {
+            content: '👟';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            font-size: 100px;
+            opacity: 0.1;
+            transform: rotate(-45deg);
+        }
+        
+        .shoe-showcase::after {
+            content: '👟';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 100px;
+            opacity: 0.1;
+            transform: rotate(45deg);
+        }
+        
+        /* Brand Logos */
+        .brand-logo {
+            height: 60px;
+            filter: grayscale(100%);
+            transition: all 0.3s;
+            opacity: 0.7;
+        }
+        
+        .brand-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        /* Size Selector */
+        .size-option {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--light-blue);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            margin: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .size-option:hover, .size-option.active {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+    <!-- Shoe Elements -->
+    <i class="fas fa-shoe-prints shoe-element shoe-1"></i>
+    <i class="fas fa-walking shoe-element shoe-2"></i>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-shoe-prints"></i> ShoeStyle
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Koleksi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#brands">Brands</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <div class="hero-content floating">
+                <h1 class="display-3 fw-bold">Sepatu Branded Terlengkap</h1>
+                <p class="lead">Temukan koleksi sepatu branded terbaru dari berbagai merek ternama. Kami menyediakan sepatu dengan kualitas terbaik dan harga terjangkau. Dapatkan sepatu impian Anda hanya di ShoeStyle!</p>
+                <a href="#products" class="btn btn-buy btn-lg mt-3">Jelajahi Koleksi</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2 class="text-center section-title">Tentang ShoeStyle</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p>ShoeStyle adalah toko sepatu online terpercaya yang menyediakan berbagai macam sepatu branded dengan kualitas terbaik. Didirikan sejak tahun 2015, kami telah berkomitmen untuk menyediakan produk sepatu yang tidak hanya stylish tetapi juga nyaman digunakan.</p>
+                    <p>Kami bekerja sama dengan berbagai brand ternama seperti Nike, Adidas, Converse, Vans, dan banyak lagi. Setiap produk yang kami jual dijamin keasliannya dan melalui proses kontrol kualitas yang ketat.</p>
+                    <p>Dengan berbagai pilihan model, ukuran, dan warna, kami yakin Anda akan menemukan sepatu yang sempurna untuk melengkapi gaya Anda. Kami juga menyediakan layanan konsultasi gratis untuk membantu Anda memilih sepatu yang tepat.</p>
+                    <div class="shoe-showcase mt-4">
+                        <h4 class="text-center">✨ Koleksi Spesial ✨</h4>
+                        <p class="text-center mb-0">Setiap bulan kami merilis koleksi terbaru dengan diskon spesial untuk member!</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About ShoeStyle" class="img-fluid about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section id="brands" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Brands Terkenal</h2>
+            <div class="row text-center">
+                <div class="col-md-2 col-4 mb-4">
+                    <img src="https://logos-world.net/wp-content/uploads/2020/04/Nike-Logo.png" alt="Nike" class="img-fluid brand-logo">
+                </div>
+                <div class="col-md-2 col-4 mb-4">
+                    <img src="https://logos-world.net/wp-content/uploads/2020/04/Adidas-Logo.png" alt="Adidas" class="img-fluid brand-logo">
+                </div>
+                <div class="col-md-2 col-4 mb-4">
+                    <img src="convers.jpg" alt="Converse" class="img-fluid brand-logo">
+                </div>
+                <div class="col-md-2 col-4 mb-4">
+                    <img src="https://logos-world.net/wp-content/uploads/2020/04/Vans-Logo.png" alt="Vans" class="img-fluid brand-logo">
+                </div>
+                <div class="col-md-2 col-4 mb-4">
+                    <img src="https://logos-world.net/wp-content/uploads/2020/04/Puma-Logo.png" alt="Puma" class="img-fluid brand-logo">
+                </div>
+                <div class="col-md-2 col-4 mb-4">
+                    <img src="sepatu.jpg" alt="New Balance" class="img-fluid brand-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section-padding">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Koleksi Kami</h2>
+            <div class="row">
+                <!-- Product 1 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Nike Air Max">
+                            <div class="ribbon ribbon-new">BARU</div>
+                            <div class="shoe-badge">🔥</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Nike Air Max 270</h5>
+                            <p class="card-text">Sepatu lari dengan teknologi Air Max terbaru, nyaman digunakan untuk aktivitas sehari-hari.</p>
+                            <div class="mb-3">
+                                <small class="text-muted">Pilih Ukuran:</small>
+                                <div>
+                                    <span class="size-option">39</span>
+                                    <span class="size-option">40</span>
+                                    <span class="size-option active">41</span>
+                                    <span class="size-option">42</span>
+                                    <span class="size-option">43</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag">Rp 1.899.000</span>
+                                <div>
+                                    <button class="btn btn-cart btn-sm" onclick="addToCart('Nike Air Max 270', 1899000, 'https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </button>
+                                    <button class="btn btn-buy btn-sm ms-1" onclick="buyNow('Nike Air Max 270', 1899000, 'https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">Beli</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Adidas Ultraboost">
+                            <div class="ribbon ribbon-sale">DISKON</div>
+                            <div class="shoe-badge">⭐</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Adidas Ultraboost 22</h5>
+                            <p class="card-text">Sepatu dengan teknologi Boost terbaru, memberikan kenyamanan maksimal untuk berlari.</p>
+                            <div class="mb-3">
+                                <small class="text-muted">Pilih Ukuran:</small>
+                                <div>
+                                    <span class="size-option">38</span>
+                                    <span class="size-option">39</span>
+                                    <span class="size-option active">40</span>
+                                    <span class="size-option">41</span>
+                                    <span class="size-option">42</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag">Rp 2.299.000</span>
+                                <div>
+                                    <button class="btn btn-cart btn-sm" onclick="addToCart('Adidas Ultraboost 22', 2299000, 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </button>
+                                    <button class="btn btn-buy btn-sm ms-1" onclick="buyNow('Adidas Ultraboost 22', 2299000, 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">Beli</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Converse Chuck Taylor">
+                            <div class="ribbon ribbon-popular">POPULER</div>
+                            <div class="shoe-badge">❤️</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Converse Chuck Taylor</h5>
+                            <p class="card-text">Sepatu klasik yang tak pernah lekang oleh waktu, cocok untuk gaya kasual sehari-hari.</p>
+                            <div class="mb-3">
+                                <small class="text-muted">Pilih Ukuran:</small>
+                                <div>
+                                    <span class="size-option">38</span>
+                                    <span class="size-option">39</span>
+                                    <span class="size-option">40</span>
+                                    <span class="size-option active">41</span>
+                                    <span class="size-option">42</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag">Rp 799.000</span>
+                                <div>
+                                    <button class="btn btn-cart btn-sm" onclick="addToCart('Converse Chuck Taylor', 799000, 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </button>
+                                    <button class="btn btn-buy btn-sm ms-1" onclick="buyNow('Converse Chuck Taylor', 799000, 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">Beli</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Vans Old Skool">
+                            <div class="ribbon ribbon-new">BARU</div>
+                            <div class="shoe-badge">👟</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Vans Old Skool</h5>
+                            <p class="card-text">Sepatu skateboard ikonik dengan sidestripe yang menjadi ciri khas brand Vans.</p>
+                            <div class="mb-3">
+                                <small class="text-muted">Pilih Ukuran:</small>
+                                <div>
+                                    <span class="size-option">39</span>
+                                    <span class="size-option">40</span>
+                                    <span class="size-option active">41</span>
+                                    <span class="size-option">42</span>
+                                    <span class="size-option">43</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag">Rp 699.000</span>
+                                <div>
+                                    <button class="btn btn-cart btn-sm" onclick="addToCart('Vans Old Skool', 699000, 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </button>
+                                    <button class="btn btn-buy btn-sm ms-1" onclick="buyNow('Vans Old Skool', 699000, 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">Beli</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Puma RS-X">
+                            <div class="ribbon ribbon-sale">DISKON</div>
+                            <div class="shoe-badge">⚡</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Puma RS-X Toys</h5>
+                            <p class="card-text">Sepatu dengan desain futuristik dan warna yang mencolok, cocok untuk gaya streetwear.</p>
+                            <div class="mb-3">
+                                <small class="text-muted">Pilih Ukuran:</small>
+                                <div>
+                                    <span class="size-option">39</span>
+                                    <span class="size-option">40</span>
+                                    <span class="size-option active">41</span>
+                                    <span class="size-option">42</span>
+                                    <span class="size-option">43</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag">Rp 1.299.000</span>
+                                <div>
+                                    <button class="btn btn-cart btn-sm" onclick="addToCart('Puma RS-X Toys', 1299000, 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </button>
+                                    <button class="btn btn-buy btn-sm ms-1" onclick="buyNow('Puma RS-X Toys', 1299000, 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">Beli</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1542280756-74b2f55e73ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="New Balance 574">
+                            <div class="ribbon ribbon-popular">POPULER</div>
+                            <div class="shoe-badge">🌟</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">New Balance 574</h5>
+                            <p class="card-text">Sepatu klasik dengan kenyamanan maksimal, cocok untuk aktivitas sehari-hari.</p>
+                            <div class="mb-3">
+                                <small class="text-muted">Pilih Ukuran:</small>
+                                <div>
+                                    <span class="size-option">38</span>
+                                    <span class="size-option">39</span>
+                                    <span class="size-option">40</span>
+                                    <span class="size-option active">41</span>
+                                    <span class="size-option">42</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag">Rp 1.199.000</span>
+                                <div>
+                                    <button class="btn btn-cart btn-sm" onclick="addToCart('New Balance 574', 1199000, 'https://images.unsplash.com/photo-1542280756-74b2f55e73ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </button>
+                                    <button class="btn btn-buy btn-sm ms-1" onclick="buyNow('New Balance 574', 1199000, 'https://images.unsplash.com/photo-1542280756-74b2f55e73ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">Beli</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Hubungi Kami</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-5">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Alamat Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Pesan</label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                </div>
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                    <label class="form-check-label" for="termsCheck">
+                                        Saya setuju dengan syarat dan ketentuan
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-buy w-100">Kirim Pesan</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="mb-4"><i class="fas fa-shoe-prints"></i> ShoeStyle</h3>
+                    <p>Menyediakan sepatu
